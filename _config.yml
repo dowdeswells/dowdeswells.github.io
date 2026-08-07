@@ -1,0 +1,6 @@
+title: Software Development Thoughts
+description: "What's taking up my free time lately."
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
