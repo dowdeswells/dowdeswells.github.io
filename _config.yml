@@ -1,6 +1,21 @@
 title: Software Development Thoughts
 description: "What's taking up my free time lately."
 theme: minima
+
+# ------------------------------------------------------------
+# Retro arcade theme — pick one:
+#   neon      -> 80s neon lights (hot pink & cyan on deep purple)
+#   phosphor  -> amber CRT terminal (monochrome, heavy scanlines)
+#   vector    -> vector wireframe cabinet (cyan lines on black)
+# ------------------------------------------------------------
+arcade_theme: vector
+
+# README.md is repo documentation only — keep it out of the
+# published site (otherwise GitHub Pages renders it as a page).
+exclude:
+  - README.md
+  - preview/
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

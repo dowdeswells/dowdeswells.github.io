@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<article class="post arcade-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="post-date dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %d, %Y" }}</time>
+    </p>
+  </header>
+
+  <!-- SERIES NAVIGATION BOX START -->
+  {%- if page.series -%}
+  <aside class="series-panel" aria-label="Series navigation">
+    <div class="series-title">📚 Part of the "{{ page.series }}" Series</div>
+    <ul class="series-list">
+      {% assign series_posts = site.posts | where: "series", page.series | sort: "series_order" %}
+      {% for post in series_posts %}
+        <li>
+          {% if post.url == page.url %}
+            <span class="series-current">▸ Part {{ post.series_order | default: 1 }}: {{ post.title }} (Currently Reading)</span>
+          {% else %}
+            <a class="series-link" href="{{ site.baseurl }}{{ post.url }}">Part {{ post.series_order | default: 1 }}: {{ post.title }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </aside>
+  {%- endif -%}
+  <!-- SERIES NAVIGATION BOX END -->
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+</article>

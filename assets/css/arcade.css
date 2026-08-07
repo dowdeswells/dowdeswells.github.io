@@ -1,0 +1,483 @@
+/* ============================================================
+   RETRO ARCADE THEME  —  arcade.css
+   ------------------------------------------------------------
+   Three skins, switched via the <body> class:
+     .theme-neon      - 80s neon lights          (default)
+     .theme-phosphor  - amber CRT terminal
+     .theme-vector    - vector wireframe cabinet
+   Pick one in _config.yml:  arcade_theme: neon|phosphor|vector
+   ============================================================ */
+
+/* ---------- 1. THEME PALETTES (CSS variables) ---------- */
+
+:root,
+body.theme-neon {
+  --bg:           #0b0320;   /* deep purple-black        */
+  --bg-soft:      #140b36;
+  --bg-panel:     #150a35;
+  --bg-panel-alt: #1f0f4c;
+  --fg:           #eceaff;
+  --fg-muted:     #9c93d0;
+  --accent:       #ff3cac;   /* hot pink                 */
+  --accent-2:     #00f0ff;   /* cyan                     */
+  --accent-3:     #7a5cff;   /* electric violet          */
+  --border:       #5a2e8c;
+  --glow:         rgba(255, 60, 172, 0.85);
+  --glow-2:       rgba(0, 240, 255, 0.85);
+  --scanline:     rgba(0, 0, 0, 0.18);
+  --panel-shadow: 0 0 18px var(--glow), inset 0 0 40px rgba(0, 0, 0, 0.55);
+}
+
+body.theme-phosphor {
+  --bg:           #0c0a02;   /* warm black               */
+  --bg-soft:      #161206;
+  --bg-panel:     #171205;
+  --bg-panel-alt: #231b06;
+  --fg:           #ffc24b;   /* amber phosphor           */
+  --fg-muted:     #a37a26;
+  --accent:       #ffb000;
+  --accent-2:     #ff7b00;
+  --accent-3:     #ffd766;
+  --border:       #6b5414;
+  --glow:         rgba(255, 176, 0, 0.7);
+  --glow-2:       rgba(255, 123, 0, 0.7);
+  --scanline:     rgba(0, 0, 0, 0.38);
+  --panel-shadow: 0 0 14px var(--glow), inset 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+body.theme-vector {
+  --bg:           #000000;   /* pure black               */
+  --bg-soft:      #05070f;
+  --bg-panel:     #060a18;
+  --bg-panel-alt: #0b1230;
+  --fg:           #eef2ff;
+  --fg-muted:     #7f90c8;
+  --accent:       #00e5ff;   /* cyan wireframe           */
+  --accent-2:     #8a5cff;   /* violet                   */
+  --accent-3:     #ffffff;
+  --border:       #24406b;
+  --glow:         rgba(0, 229, 255, 0.8);
+  --glow-2:       rgba(138, 92, 255, 0.8);
+  --scanline:     rgba(0, 0, 0, 0.25);
+  --panel-shadow: 0 0 12px var(--glow-2), inset 0 0 40px rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- 2. BASE ---------- */
+
+html { background: var(--bg); }
+
+body {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, var(--bg-soft), transparent 70%),
+    var(--bg);
+  color: var(--fg);
+  font-family: "VT323", "Courier New", monospace;
+  font-size: 21px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1.5;
+  text-shadow: 0 0 8px var(--glow);
+}
+
+a { color: var(--accent-2); }
+
+::selection { background: var(--accent); color: var(--bg); }
+
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border: 2px solid var(--bg); }
+
+/* ---------- 3. CRT OVERLAY (scanlines + vignette) ---------- */
+
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--scanline) 0px,
+    var(--scanline) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  box-shadow: inset 0 0 160px rgba(0, 0, 0, 0.75);
+}
+
+/* ---------- 4. HEADER ---------- */
+
+.site-header {
+  background: var(--bg-panel);
+  border-bottom: 3px solid var(--accent);
+  box-shadow: 0 0 14px var(--glow);
+}
+
+.site-title {
+  font-family: "Press Start 2P", monospace;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--glow);
+  padding: 12px 0;
+}
+
+.site-title:hover { color: var(--accent-3); }
+
+.site-nav .page-link {
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  color: var(--accent-2);
+  text-decoration: none;
+}
+
+.site-nav .page-link:hover { text-shadow: 0 0 8px var(--glow-2); }
+
+.menu-icon > svg { fill: var(--accent); }
+
+/* ---------- 5. FOOTER ---------- */
+
+.site-footer {
+  border-top: 3px solid var(--accent);
+  background: var(--bg-panel);
+  margin-top: 60px;
+  box-shadow: 0 -4px 14px var(--glow);
+}
+
+.footer-heading {
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--glow);
+}
+
+.footer-col-wrapper p,
+.contact-list,
+.social-media-list {
+  font-size: 18px;
+  color: var(--fg-muted);
+}
+
+/* ---------- 6. HOME / HERO ---------- */
+
+.arcade-hero {
+  text-align: center;
+  border: 3px solid var(--accent);
+  background: var(--bg-panel);
+  box-shadow: var(--panel-shadow);
+  padding: 36px 20px 28px;
+  margin: 34px 0 24px;
+}
+
+.hero-coin {
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--accent-2);
+  text-shadow: 0 0 10px var(--glow-2);
+  margin: 0 0 22px;
+  animation: arcade-blink 1.4s steps(2, start) infinite;
+}
+
+.hero-title {
+  margin: 0 0 14px;
+  font-size: clamp(18px, 5vw, 32px);
+  color: var(--accent);
+  animation: arcade-pulse 3s ease-in-out infinite;
+}
+
+.hero-tagline {
+  margin: 0 0 22px;
+  font-size: 24px;
+  color: var(--fg-muted);
+}
+
+.hero-prompt {
+  display: inline-block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--accent-3);
+  border: 2px solid var(--border);
+  padding: 8px 14px;
+}
+
+/* ---------- 7. HOME / HIGH-SCORE TABLE ---------- */
+
+.score-section { margin: 36px 0; }
+
+.score-heading {
+  text-align: center;
+  font-size: 17px;
+  letter-spacing: 2px;
+  color: var(--accent-2);
+  text-shadow: 0 0 12px var(--glow-2);
+  margin: 0 0 20px;
+}
+
+.score-heading::before { content: "\25C4  "; }
+.score-heading::after  { content: "  \25BA"; }
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 3px solid var(--border);
+  background: var(--bg-panel);
+  box-shadow: var(--panel-shadow);
+}
+
+.post-list li {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: baseline;
+  column-gap: 16px;
+  padding: 14px 18px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.post-list li:last-child { border-bottom: none; }
+.post-list li:nth-child(even) { background: var(--bg-panel-alt); }
+
+.post-rank {
+  font-family: "Press Start 2P", monospace;
+  font-size: 12px;
+  color: var(--accent-3);
+  text-shadow: 0 0 8px var(--glow);
+}
+
+.post-title-wrap { margin: 0; font-size: 0; }  /* strip h3 defaults */
+
+.post-link {
+  font-size: 24px;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.post-link:hover {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--glow);
+}
+
+.post-list .post-meta {
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  color: var(--fg-muted);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.rss-subscribe {
+  text-align: center;
+  color: var(--fg-muted);
+  margin-top: 18px;
+}
+
+.rss-subscribe a { color: var(--accent-2); }
+
+/* ---------- 8. POST PAGE ---------- */
+
+.post-header {
+  border-bottom: 2px dashed var(--border);
+  padding-bottom: 18px;
+  margin-bottom: 26px;
+}
+
+.post-title {
+  font-size: clamp(15px, 4vw, 22px);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.post-date {
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  color: var(--fg-muted);
+}
+
+/* ---------- 9. SERIES NAVIGATION PANEL ---------- */
+
+.series-panel {
+  border: 3px solid var(--accent);
+  background: var(--bg-panel);
+  box-shadow: var(--panel-shadow);
+  padding: 18px 20px;
+  margin: 0 0 30px;
+}
+
+.series-title {
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.series-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.series-list li { margin: 8px 0; }
+
+.series-link {
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  line-height: 1.9;
+  color: var(--accent-2);
+  text-decoration: none;
+  border: 2px solid var(--border);
+  padding: 6px 10px;
+  display: inline-block;
+}
+
+.series-link:hover {
+  background: var(--accent-2);
+  color: var(--bg);
+  box-shadow: 0 0 12px var(--glow-2);
+}
+
+.series-current {
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  line-height: 1.9;
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--glow);
+}
+
+/* ---------- 10. POST CONTENT ---------- */
+
+/* Blog post body text: swap the arcade terminal font for a readable
+   serif, and lift the reading area above the CRT scanline overlay
+   (.crt-overlay sits at z-index 9999) onto an opaque background so
+   scanlines and the vignette never touch the text. */
+.post-content {
+  position: relative;
+  z-index: 10001;                /* above the CRT overlay */
+  background: var(--bg);         /* opaque: hides scanlines behind */
+  border: 1px solid var(--border);
+  padding: 24px 26px 30px;
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-size: 18.5px;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.post-content h2 {
+  font-size: 15px;
+  color: var(--accent-2);
+  margin: 2em 0 0.8em;
+}
+
+.post-content h3 {
+  font-size: 12px;
+  margin: 2em 0 0.8em;
+}
+
+.post-content a {
+  color: var(--accent-2);
+  text-decoration: underline dashed;
+  text-underline-offset: 3px;
+}
+
+.post-content a:hover { text-shadow: 0 0 8px var(--glow-2); }
+
+.post-content blockquote {
+  border-left: 4px solid var(--accent);
+  background: var(--bg-panel);
+  padding: 10px 18px;
+  margin-left: 0;
+  color: var(--fg-muted);
+}
+
+.post-content code {
+  font-family: "Courier New", monospace;
+  font-size: 0.9em;
+  color: var(--accent-2);
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  padding: 1px 5px;
+}
+
+.post-content pre,
+.post-content .highlight {
+  background: #020104;
+  border: 2px solid var(--border);
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.post-content pre code {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--fg);
+}
+
+.post-content hr {
+  border: none;
+  border-top: 3px dashed var(--border);
+}
+
+.post-content img {
+  image-rendering: pixelated;
+  border: 3px solid var(--border);
+  max-width: 100%;
+}
+
+.post-content table { border-collapse: collapse; margin: 1.5em 0; }
+.post-content th,
+.post-content td {
+  border: 2px solid var(--border);
+  padding: 8px 12px;
+}
+.post-content th { background: var(--bg-panel); color: var(--accent); }
+
+/* ---------- 11. ANIMATIONS ---------- */
+
+@keyframes arcade-blink { 50% { opacity: 0; } }
+
+@keyframes arcade-pulse {
+  0%, 100% { text-shadow: 0 0 6px var(--glow), 0 0 18px var(--glow); }
+  50%      { text-shadow: 0 0 12px var(--glow), 0 0 36px var(--glow); }
+}
+
+/* ---------- 12. RESPONSIVE ---------- */
+
+@media (max-width: 600px) {
+  body { font-size: 19px; }
+
+  .site-title { font-size: 12px; }
+
+  .arcade-hero { padding: 26px 14px 20px; margin-top: 22px; }
+  .hero-tagline { font-size: 20px; }
+
+  .post-list li { grid-template-columns: 40px 1fr; }
+  .post-list .post-meta { grid-column: 2; text-align: left; }
+  .post-link { font-size: 20px; }
+
+  .series-panel { padding: 14px 14px; }
+
+  .post-content {
+    font-size: 17px;
+    padding: 16px 14px 22px;
+  }
+}
+
+/* ---------- 13. REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
