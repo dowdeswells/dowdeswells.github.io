@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+<p><small>{{ page.date | date: "%B %d, %Y" }}</small></p>
+
+<!-- SERIES NAVIGATION BOX START -->
+{% if page.series %}
+  <div style="background: #f4f6f8; padding: 15px; border-left: 4px solid #007acc; border-radius: 4px; margin: 20px 0;">
+    <strong>📚 Part of the "{{ page.series }}" Series:</strong>
+    <ul style="margin-top: 10px; padding-left: 20px;">
+      {% assign series_posts = site.posts | where: "series", page.series | sort: "series_order" %}
+      {% for post in series_posts %}
+        <li>
+          {% if post.url == page.url %}
+            <strong>Part {{ post.series_order }}: {{ post.title }} (Currently Reading)</strong>
+          {% else %}
+            <a href="{{ site.baseurl }}{{ post.url }}">Part {{ post.series_order }}: {{ post.title }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+<!-- SERIES NAVIGATION BOX END -->
+
+<div class="post-content">
+  {{ content }}
+</div>
