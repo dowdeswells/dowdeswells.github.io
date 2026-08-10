@@ -3,6 +3,7 @@ layout: post
 title: "Developing with AI, developing for AI"
 date: 2026-08-07
 series: "With AI For AI"
+series_order: 1
 ---
 
 ## Goal: Agentic
@@ -17,7 +18,7 @@ At work I was using Copilot installed into Rider for .NET development.
 
 Reviewing the outcome and upon researching what is available, it has become apparent that a more simple tool is needed. Less clutter. Something in a terminal, something full screen. Focusing on the task in hand - agent work vs output review.
 
-This is provided by [pi.dev](https://pi.dev)
+This is provided by [pi.dev](https://pi.dev){:target="_blank"}
 
 ## Coding Agent: Deepseek
 

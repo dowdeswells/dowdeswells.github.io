@@ -3,6 +3,7 @@ layout: post
 title: "Methodology"
 date: 2026-08-10
 series: "With AI For AI"
+series_order: 2
 ---
 
 ## Keeping it real
@@ -12,8 +13,8 @@ After a few Vibe Code sessions with the DeepSeek API it is very easy to see how 
 
 ### AI Skills development
 There are a lot of skills out there. I started by looking at 2 in particular. 
-- [Matt Pocock](https://github.com/mattpocock/skills)
-- [Addy Osmani](https://github.com/addyosmani/agent-skills)
+- [Matt Pocock](https://github.com/mattpocock/skills){:target="_blank"}
+- [Addy Osmani](https://github.com/addyosmani/agent-skills){:target="_blank"}
 
 The Matt Pocock Grill Me skill was a revelation. The iteration over the original prompt by DeepSeek was impressive. 
 

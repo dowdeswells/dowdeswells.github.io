@@ -24,7 +24,7 @@ body.theme-neon {
   --border:       #5a2e8c;
   --glow:         rgba(255, 60, 172, 0.85);
   --glow-2:       rgba(0, 240, 255, 0.85);
-  --scanline:     rgba(0, 0, 0, 0.18);
+  --scanline:     rgba(0, 0, 0, 0.05);
   --panel-shadow: 0 0 18px var(--glow), inset 0 0 40px rgba(0, 0, 0, 0.55);
 }
 
@@ -41,7 +41,7 @@ body.theme-phosphor {
   --border:       #6b5414;
   --glow:         rgba(255, 176, 0, 0.7);
   --glow-2:       rgba(255, 123, 0, 0.7);
-  --scanline:     rgba(0, 0, 0, 0.38);
+  --scanline:     rgba(0, 0, 0, 0.10);
   --panel-shadow: 0 0 14px var(--glow), inset 0 0 40px rgba(0, 0, 0, 0.6);
 }
 
@@ -58,7 +58,7 @@ body.theme-vector {
   --border:       #24406b;
   --glow:         rgba(0, 229, 255, 0.8);
   --glow-2:       rgba(138, 92, 255, 0.8);
-  --scanline:     rgba(0, 0, 0, 0.25);
+  --scanline:     rgba(0, 0, 0, 0.06);
   --panel-shadow: 0 0 12px var(--glow-2), inset 0 0 40px rgba(0, 0, 0, 0.7);
 }
 
@@ -106,7 +106,7 @@ a { color: var(--accent-2); }
     transparent 1px,
     transparent 3px
   );
-  box-shadow: inset 0 0 160px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.45);
 }
 
 /* ---------- 4. HEADER ---------- */
@@ -204,6 +204,15 @@ a { color: var(--accent-2); }
   color: var(--accent-3);
   border: 2px solid var(--border);
   padding: 8px 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hero-prompt:hover {
+  color: var(--bg);
+  background: var(--accent-3);
+  border-color: var(--accent-3);
+  box-shadow: 0 0 14px var(--glow);
 }
 
 /* ---------- 7. HOME / HIGH-SCORE TABLE ---------- */
@@ -212,7 +221,7 @@ a { color: var(--accent-2); }
 
 .score-heading {
   text-align: center;
-  font-size: 17px;
+  font-size: 15px;
   letter-spacing: 2px;
   color: var(--accent-2);
   text-shadow: 0 0 12px var(--glow-2);
@@ -233,10 +242,11 @@ a { color: var(--accent-2); }
 
 .post-list li {
   display: grid;
-  grid-template-columns: 56px 1fr auto;
+  grid-template-columns: 48px 1fr auto;
   align-items: baseline;
-  column-gap: 16px;
-  padding: 14px 18px;
+  column-gap: 14px;
+  margin: 0;               /* override minima's .post-list > li margin */
+  padding: 6px 14px;       /* compressed, uniform row padding */
   border-bottom: 1px dashed var(--border);
 }
 
@@ -245,7 +255,7 @@ a { color: var(--accent-2); }
 
 .post-rank {
   font-family: "Press Start 2P", monospace;
-  font-size: 12px;
+  font-size: 10px;
   color: var(--accent-3);
   text-shadow: 0 0 8px var(--glow);
 }
@@ -253,7 +263,9 @@ a { color: var(--accent-2); }
 .post-title-wrap { margin: 0; font-size: 0; }  /* strip h3 defaults */
 
 .post-link {
-  font-size: 24px;
+  font-family: "VT323", "Courier New", monospace;  /* match front-page body text */
+  font-size: 21px;
+  line-height: 1.3;
   color: var(--fg);
   text-decoration: none;
 }
@@ -459,9 +471,9 @@ a { color: var(--accent-2); }
   .arcade-hero { padding: 26px 14px 20px; margin-top: 22px; }
   .hero-tagline { font-size: 20px; }
 
-  .post-list li { grid-template-columns: 40px 1fr; }
+  .post-list li { grid-template-columns: 34px 1fr; }
   .post-list .post-meta { grid-column: 2; text-align: left; }
-  .post-link { font-size: 20px; }
+  .post-link { font-size: 19px; }
 
   .series-panel { padding: 14px 14px; }
 
