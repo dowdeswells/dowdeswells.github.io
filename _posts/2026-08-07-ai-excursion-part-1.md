@@ -25,6 +25,9 @@ pi.dev integrates simply with DeepSeek, just an environment variable with the De
 It seems pretty good so let's start there.
 
 ## What have i got so far
+
+[The deployed Expense Tracker](https://expensetracker-app.thankfulbush-f2983888.australiaeast.azurecontainerapps.io/){:target="_blank"}
+
 I've been working on the code for a week. At this point I have a working expense tracker that runs an agentic loop with a register set of tools (mcp) that Add and edit expenses and income. The storage is implemented in a CosmosDB with an Event Sourcing design (which I will talk about later) which makes perfect sense for an auditable transaction record. There is a Github Action to deploy to an Azure Container App. OAuth users are provided by an Auth0 IDP.
 
 ### AI Agent Costs
