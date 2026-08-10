@@ -1,0 +1,14 @@
+<details>
+  <summary><strong>{{ include.title | default: "Click to expand details" }}</strong></summary>
+  <div style="margin-top: 10px; padding-left: 10px; border-left: 2px solid #ccc;">
+    {% capture raw_content %}{% include {{ include.file }} %}{% endcapture %}
+    {%- assign content_parts = raw_content | strip | split: '---' -%}
+    {%- if content_parts.size > 2 -%}
+      {%- assign content_parts = content_parts | slice: 2, content_parts.size -%}
+      {%- assign file_content = content_parts | join: '---' -%}
+    {%- else -%}
+      {%- assign file_content = raw_content -%}
+    {%- endif -%}
+    {{ file_content | markdownify }}
+  </div>
+</details>
