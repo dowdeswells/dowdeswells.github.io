@@ -28,3 +28,7 @@ Screenshots of each theme live in [`preview/`](preview/) (excluded from the publ
 
 Note: `README.md` is excluded from the published site
 (`exclude: [README.md]` in `_config.yml`) so it only exists as repo documentation.
+
+## Running Jekyll locally
+
+docker run --rm   -v "$PWD:/srv/jekyll:Z"   -p 4000:4000   jekyll/jekyll:pages   jekyll serve --host 0.0.0.0
