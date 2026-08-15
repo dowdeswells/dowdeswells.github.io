@@ -9,6 +9,8 @@ series_order: 5
 ## The goal
 The separation of concern skill seems to be working quite well. The code does seem to be structured in a way that I understand and I'm reasonably happy with the quality. There are, however, quite a few occurrences of repeated code. Also the size of the classes can get quite large. I wonder whether a skill could find any improvements?
 
+I'm going to work on this with the assumption that the AI knows all the concepts. It just needs me to tell it my preferences and priorities.
+
 My first attempt at skill is a very simple one. Focusing on modular design, cohesion and coupling. So as not to make the skill too long I will throw in there a reference to Robert Martin's Clean Code.
 
 ## The first skill
