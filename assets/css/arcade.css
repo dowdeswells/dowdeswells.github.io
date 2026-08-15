@@ -452,6 +452,59 @@ a { color: var(--accent-2); }
 }
 .post-content th { background: var(--bg-panel); color: var(--accent); }
 
+/* ---------- 10b. SNIPPET CONTENT (collapsible sections) ---------- */
+
+/* Snippet markdown rendered via collapsible-section.html. Sits inside
+   .post-content but reads as a secondary, inset panel: smaller pixel
+   headings, a lighter background, and a left indent vs. the main text. */
+.snippet-content {
+  margin: 14px 0 6px 16px;
+  padding: 12px 16px 16px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-2);
+}
+
+/* Headings: one step smaller than the equivalent post-content heading. */
+.snippet-content h1,
+.snippet-content h2,
+.snippet-content h3,
+.snippet-content h4,
+.snippet-content h5,
+.snippet-content h6 {
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-weight: 400;
+  text-shadow: 0 0 8px var(--glow);
+  margin: 1.6em 0 0.8em;
+}
+
+.snippet-content h1 { font-size: 13px; color: var(--accent-2); }
+.snippet-content h2 { font-size: 11px; color: var(--accent); }
+.snippet-content h3 { font-size: 10px; color: var(--accent-2); }
+.snippet-content h4 { font-size: 9px; }
+.snippet-content h5 { font-size: 8.5px; }
+.snippet-content h6 { font-size: 8px; }
+
+.snippet-content p {
+  margin: 0.9em 0;
+  line-height: 1.7;
+}
+
+.snippet-content ol,
+.snippet-content ul {
+  margin-left: 1.4em;
+  padding-left: 0;
+}
+
+.snippet-content code {
+  font-size: 0.9em;
+}
+
+.snippet-content pre,
+.snippet-content .highlight {
+  margin-left: 0;
+}
+
 /* ---------- 11. ANIMATIONS ---------- */
 
 @keyframes arcade-blink { 50% { opacity: 0; } }
@@ -480,6 +533,11 @@ a { color: var(--accent-2); }
   .post-content {
     font-size: 17px;
     padding: 16px 14px 22px;
+  }
+
+  .snippet-content {
+    margin-left: 8px;
+    padding: 10px 12px 14px;
   }
 }
 

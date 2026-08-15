@@ -1,6 +1,6 @@
 <details>
   <summary><strong>{{ include.title | default: "Click to expand details" }}</strong></summary>
-  <div style="margin-top: 10px; padding-left: 10px; border-left: 2px solid #ccc;">
+  <div class="snippet-content">
     {% capture raw_content %}{% include {{ include.file }} %}{% endcapture %}
     {%- assign content_parts = raw_content | strip | split: '---' -%}
     {%- if content_parts.size > 2 -%}

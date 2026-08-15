@@ -2,6 +2,11 @@ title: Software Development Thoughts
 description: "What's taking up my free time lately."
 theme: minima
 
+# Interpret post dates in local time so a post dated "today"
+# isn't treated as "future" by the UTC-based Docker/GitHub Pages
+# build (Jekyll hides future-dated posts by default).
+timezone: Australia/Sydney
+
 # ------------------------------------------------------------
 # Retro arcade theme — pick one:
 #   neon      -> 80s neon lights (hot pink & cyan on deep purple)

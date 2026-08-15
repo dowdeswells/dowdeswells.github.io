@@ -14,6 +14,8 @@ agent layer  ──▶  business layer  ──▶  storage layer
  (translates)      (domain logic)      (persistence, injected)
 ```
 
+Importantly the business layer does not depend on anything. For what it needs, it provides interfaces for the other layers.
+
 ### ToDo - security, testing, refactoring
 At this point the general code architecture is addressed but specific cross cutting concerns are a TODO. Specifically, looking at the source code I can see repeated code. I will address this as a priority and then move on to security hardening and iterating over the various testing phases. 
 
